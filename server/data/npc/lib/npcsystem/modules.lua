@@ -26,7 +26,7 @@ if Modules == nil then
 	SHOPMODULE_MODE_BOTH = 3 -- Both working at one time
 
 	-- Used shop mode
-	SHOPMODULE_MODE = SHOPMODULE_MODE_BOTH
+	SHOPMODULE_MODE = SHOPMODULE_MODE_TALK
 
 	Modules = {
 		parseableModules = {}

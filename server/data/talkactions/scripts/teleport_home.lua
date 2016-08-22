@@ -4,5 +4,6 @@ function onSay(player, words, param)
 	end
 
 	player:teleportTo(player:getTown():getTemplePosition())
+	player:setDirection(SOUTH)
 	return false
 end

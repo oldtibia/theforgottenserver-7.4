@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <spawns>
+	<spawn centerx="1003" centery="1012" centerz="7" radius="1">
+		<monster name="stalker" x="-1" y="1" z="7" spawntime="180" />
+	</spawn>
 	<spawn centerx="1000" centery="1016" centerz="7" radius="1">
 		<monster name="beholder" x="1" y="0" z="7" spawntime="60" />
 	</spawn>
