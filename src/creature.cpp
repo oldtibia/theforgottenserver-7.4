@@ -721,56 +721,79 @@ void Creature::onDeath()
 
 bool Creature::dropCorpse(Creature* _lastHitCreature, Creature* mostDamageCreature, bool lastHitUnjustified, bool mostDamageUnjustified)
 {
-	if (!lootDrop && getMonster()) {
-		if (master) {
-			//scripting event - onDeath
-			const CreatureEventList& deathEvents = getCreatureEvents(CREATURE_EVENT_DEATH);
-			for (CreatureEvent* deathEvent : deathEvents) {
-				deathEvent->executeOnDeath(this, nullptr, _lastHitCreature, mostDamageCreature, lastHitUnjustified, mostDamageUnjustified);
-			}
-		}
+    if (!lootDrop && getMonster()) {
+        Item* splash;
+        switch (getRace()) {
+            case RACE_VENOM:
+                splash = Item::CreateItem(ITEM_FULLSPLASH, FLUID_GREEN);
+                break;
 
-		g_game.addMagicEffect(getPosition(), CONST_ME_POFF);
-	} else {
-		Item* splash;
-		switch (getRace()) {
-			case RACE_VENOM:
-				splash = Item::CreateItem(ITEM_FULLSPLASH, FLUID_GREEN);
-				break;
+            case RACE_BLOOD:
+                splash = Item::CreateItem(ITEM_FULLSPLASH, FLUID_BLOOD);
+                break;
 
-			case RACE_BLOOD:
-				splash = Item::CreateItem(ITEM_FULLSPLASH, FLUID_BLOOD);
-				break;
+            default:
+                splash = nullptr;
+                break;
+        }
 
-			default:
-				splash = nullptr;
-				break;
-		}
+        Tile* tile = getTile();
 
-		Tile* tile = getTile();
+        if (splash) {
+            g_game.internalAddItem(tile, splash, INDEX_WHEREEVER, FLAG_NOLIMIT);
+            g_game.startDecay(splash);
+        }
 
-		if (splash) {
-			g_game.internalAddItem(tile, splash, INDEX_WHEREEVER, FLAG_NOLIMIT);
-			g_game.startDecay(splash);
-		}
+        Item* corpse = getCorpse(_lastHitCreature, mostDamageCreature);
+        if (corpse) {
+            g_game.internalAddItem(tile, corpse, INDEX_WHEREEVER, FLAG_NOLIMIT);
+            g_game.startDecay(corpse);
+        }
 
-		Item* corpse = getCorpse(_lastHitCreature, mostDamageCreature);
-		if (corpse) {
-			g_game.internalAddItem(tile, corpse, INDEX_WHEREEVER, FLAG_NOLIMIT);
-			g_game.startDecay(corpse);
-		}
+        //scripting event - onDeath
+        for (CreatureEvent* deathEvent : getCreatureEvents(CREATURE_EVENT_DEATH)) {
+            deathEvent->executeOnDeath(this, corpse, _lastHitCreature, mostDamageCreature, lastHitUnjustified, mostDamageUnjustified);
+        }
+    } else {
+        Item* splash;
+        switch (getRace()) {
+            case RACE_VENOM:
+                splash = Item::CreateItem(ITEM_FULLSPLASH, FLUID_GREEN);
+                break;
 
-		//scripting event - onDeath
-		for (CreatureEvent* deathEvent : getCreatureEvents(CREATURE_EVENT_DEATH)) {
-			deathEvent->executeOnDeath(this, corpse, _lastHitCreature, mostDamageCreature, lastHitUnjustified, mostDamageUnjustified);
-		}
+            case RACE_BLOOD:
+                splash = Item::CreateItem(ITEM_FULLSPLASH, FLUID_BLOOD);
+                break;
 
-		if (corpse) {
-			dropLoot(corpse->getContainer(), _lastHitCreature);
-		}
-	}
+            default:
+                splash = nullptr;
+                break;
+        }
 
-	return true;
+        Tile* tile = getTile();
+
+        if (splash) {
+            g_game.internalAddItem(tile, splash, INDEX_WHEREEVER, FLAG_NOLIMIT);
+            g_game.startDecay(splash);
+        }
+
+        Item* corpse = getCorpse(_lastHitCreature, mostDamageCreature);
+        if (corpse) {
+            g_game.internalAddItem(tile, corpse, INDEX_WHEREEVER, FLAG_NOLIMIT);
+            g_game.startDecay(corpse);
+        }
+
+        //scripting event - onDeath
+        for (CreatureEvent* deathEvent : getCreatureEvents(CREATURE_EVENT_DEATH)) {
+            deathEvent->executeOnDeath(this, corpse, _lastHitCreature, mostDamageCreature, lastHitUnjustified, mostDamageUnjustified);
+        }
+
+        if (corpse) {
+            dropLoot(corpse->getContainer(), _lastHitCreature);
+        }
+    }
+
+    return true;
 }
 
 bool Creature::hasBeenAttacked(uint32_t attackerId)
