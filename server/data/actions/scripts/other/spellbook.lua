@@ -21,7 +21,7 @@ function onUse(player, item, fromPosition, target, toPosition)
 			if i ~= 1 then
 				line = "\n"
 			end
-			line = line .. spell.mlevel .. ". Level Spells \n"
+			line = line .. "Spells for Magic level " .. spell.mlevel .. "\n"
 			prevLevel = spell.mlevel
 		end
 		text = text .. line .. "   " .. spell.words .. " - " .. spell.name .. " : " .. spell.mana .. "\n"
