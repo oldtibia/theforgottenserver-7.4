@@ -1,5 +1,5 @@
 local combat = Combat()
-combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_MAGIC_BLUE)
+combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_MAGIC_RED)
 
 local area = createCombatArea(AREA_SQUARE1X1)
 combat:setArea(area)
