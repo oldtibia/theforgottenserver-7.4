@@ -1784,20 +1784,20 @@ void Monster::death(Creature*)
 
 Item* Monster::getCorpse(Creature* _lastHitCreature, Creature* mostDamageCreature)
 {
-	Item* corpse = Creature::getCorpse(_lastHitCreature, mostDamageCreature);
-	if (corpse) {
-		if (mostDamageCreature) {
-			if (mostDamageCreature->getPlayer()) {
-				corpse->setCorpseOwner(mostDamageCreature->getID());
-			} else {
-				const Creature* mostDamageCreatureMaster = mostDamageCreature->getMaster();
-				if (mostDamageCreatureMaster && mostDamageCreatureMaster->getPlayer()) {
-					corpse->setCorpseOwner(mostDamageCreatureMaster->getID());
-				}
-			}
-		}
-	}
-	return corpse;
+    Item* corpse = Creature::getCorpse(_lastHitCreature, mostDamageCreature);
+    /* if (corpse) {
+        if (mostDamageCreature) {
+            if (mostDamageCreature->getPlayer()) {
+                corpse->setCorpseOwner(mostDamageCreature->getID());
+            } else {
+                const Creature* mostDamageCreatureMaster = mostDamageCreature->getMaster();
+                if (mostDamageCreatureMaster && mostDamageCreatureMaster->getPlayer()) {
+                    corpse->setCorpseOwner(mostDamageCreatureMaster->getID());
+                }
+            }
+        }
+    } */
+    return corpse;
 }
 
 bool Monster::isInSpawnRange(const Position& pos) const
