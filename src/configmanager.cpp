@@ -85,6 +85,7 @@ bool ConfigManager::load()
 	boolean[CLASSIC_EQUIPMENT_SLOTS] = getGlobalBoolean(L, "classicEquipmentSlots", false);
 	boolean[UH_TRAP] = getGlobalBoolean(L, "UHTrap", false);
 	boolean[HEIGHT_STACK_BLOCK] = getGlobalBoolean(L, "heightStackBlock", false);
+	boolean[DISPLAY_HEALING_NUMBERS] = getGlobalBoolean(L, "displayHealingNumbers", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");

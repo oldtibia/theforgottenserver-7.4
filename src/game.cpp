@@ -3429,7 +3429,10 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 			TextMessage message;
 			std::ostringstream strHealthChange;
 			strHealthChange << realHealthChange;
-			addAnimatedText(strHealthChange.str(), targetPos, TEXTCOLOR_MAYABLUE);
+
+			if (g_config.getBoolean(ConfigManager::DISPLAY_HEALING_NUMBERS)) {
+				addAnimatedText(strHealthChange.str(), targetPos, TEXTCOLOR_MAYABLUE);
+			}
 
 			SpectatorVec list;
 			map.getSpectators(list, targetPos, false, true);
