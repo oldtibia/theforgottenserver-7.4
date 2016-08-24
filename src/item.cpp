@@ -1304,7 +1304,14 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 	if (it.showDuration) {
 		if (item && item->hasAttribute(ITEM_ATTRIBUTE_DURATION)) {
 			uint32_t duration = item->getDuration() / 1000;
-			s << " that will expire in ";
+
+			if (it.abilities) {
+				if (it.abilities->manaShield) {
+					s << " that has energy for ";
+				}
+			} else {
+				s << " that will expire in ";
+			}
 
 			if (duration >= 86400) {
 				uint16_t days = duration / 86400;
@@ -1332,6 +1339,12 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 				}
 			} else {
 				s << duration << " second" << (duration != 1 ? "s" : "");
+			}
+
+			if (it.abilities) {
+				if (it.abilities->manaShield) {
+					s << " left";
+				}
 			}
 		} else {
 			s << " that is brand-new";
