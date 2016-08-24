@@ -22,6 +22,8 @@ function onSay(player, words, param)
 	if count ~= nil then
 		if itemType:isStackable() then
 			count = math.min(10000, math.max(1, count))
+		elseif itemType:getCharges() and not itemType:isRune() then
+			count = math.min(250, math.max(1, count))
 		elseif not itemType:isFluidContainer() then
 			count = math.min(100, math.max(1, count))
 		else
