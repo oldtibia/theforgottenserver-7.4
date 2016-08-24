@@ -1226,15 +1226,15 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 
 		if (it.abilities) {
 			if (it.abilities->speed > 0) {
-				s << " (speed " << std::showpos << (it.abilities->speed / 2) << std::noshowpos << ')';
+				//s << " (speed " << std::showpos << (it.abilities->speed / 2) << std::noshowpos << ')';
 			} else if (hasBitSet(CONDITION_DRUNK, it.abilities->conditionSuppressions)) {
-				s << " (hard drinking)";
+				//s << " (hard drinking)";
 			} else if (it.abilities->invisible) {
-				s << " (invisibility)";
+				//s << " (invisibility)";
 			} else if (it.abilities->regeneration) {
-				s << " (faster regeneration)";
+				//s << " (faster regeneration)";
 			} else if (it.abilities->manaShield) {
-				s << " (mana shield)";
+				//s << " (mana shield)";
 			} else {
 				found = false;
 			}
