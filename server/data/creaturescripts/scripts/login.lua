@@ -1,5 +1,7 @@
 function onLogin(player)
 	local loginStr = ""
+	local timeZone = ""
+
 	if player:getLastLoginSaved() <= 0 then
 		loginStr = "Welcome to " .. configManager.getString(configKeys.SERVER_NAME) .. "!"
 		loginStr = loginStr .. " Please choose your outfit."
@@ -9,8 +11,14 @@ function onLogin(player)
 			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, loginStr)
 		end
 
-		--loginStr = string.format("Your last visit was on %s.", os.date("%a %b %d %X %Y", player:getLastLoginSaved()))
-		loginStr = string.format("Your last visit in " .. configManager.getString(configKeys.SERVER_NAME) .. ": %s CEST.", os.date("%d. %b %Y %X", player:getLastLoginSaved()))
+		if os.date("%Z").isdst ~= nil then
+			timeZone = "CET"
+		else
+			timeZone = "CEST"
+		end
+
+		-- Your last visit in Tibia: 27. Aug 2016 02:48:14 Test.
+		loginStr = string.format("Your last visit in " .. configManager.getString(configKeys.SERVER_NAME) .. ": %s " .. timeZone .. ".", os.date("%d. %b %Y %X", player:getLastLoginSaved()))
 	end
 	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, loginStr)
 
