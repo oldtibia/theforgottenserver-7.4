@@ -67,6 +67,7 @@ UHTrap = true
 -- Can walk/push over 2 items with height attribute (Parcels, boxes etc.)
 heightStackBlock = true
 displayHealingNumbers = false
+houseAntiTrash = true
 
 -- Rates
 -- NOTE: rateExp is not used if you have enabled stages in data/XML/stages.xml

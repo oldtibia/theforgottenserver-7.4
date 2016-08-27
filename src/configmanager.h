@@ -44,6 +44,7 @@ class ConfigManager
 			UH_TRAP,
 			HEIGHT_STACK_BLOCK,
 			DISPLAY_HEALING_NUMBERS,
+			HOUSE_ANTI_TRASH,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
