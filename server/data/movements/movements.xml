@@ -163,5 +163,7 @@
 	<!-- Helmets -->
 	<movevent event="Equip" itemid="2343" slot="head" function="onEquipItem" />
 	<movevent event="DeEquip" itemid="2343" slot="head" function="onDeEquipItem" />
+	<movevent event="Equip" itemid="2323" slot="head" function="onEquipItem" />
+	<movevent event="DeEquip" itemid="2323" slot="head" function="onDeEquipItem" />
 
 	</movements>
