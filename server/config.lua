@@ -68,6 +68,7 @@ UHTrap = true
 heightStackBlock = true
 displayHealingNumbers = false
 houseAntiTrash = true
+autoStackItems = true
 
 -- Rates
 -- NOTE: rateExp is not used if you have enabled stages in data/XML/stages.xml

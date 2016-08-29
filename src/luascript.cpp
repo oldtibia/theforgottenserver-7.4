@@ -1614,6 +1614,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::HEIGHT_STACK_BLOCK)
 	registerEnumIn("configKeys", ConfigManager::DISPLAY_HEALING_NUMBERS)
 	registerEnumIn("configKeys", ConfigManager::HOUSE_ANTI_TRASH)
+	registerEnumIn("configKeys", ConfigManager::AUTO_STACK_ITEMS)
 
 	registerEnumIn("configKeys", ConfigManager::MAP_NAME)
 	registerEnumIn("configKeys", ConfigManager::HOUSE_RENT_PERIOD)
