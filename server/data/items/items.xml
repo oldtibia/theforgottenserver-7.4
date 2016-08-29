@@ -2918,7 +2918,7 @@
 		<attribute key="description" value="You have a vague feeling that it looks somewhat silly." />
 		<attribute key="weight" value="700" />
 		<attribute key="armor" value="3" />
-		<attribute key="magiclevelpoints" value="1" />
+		<!--<attribute key="magiclevelpoints" value="1" />-->
 		<attribute key="slotType" value="head" />
 	</item>
 	<item id="2324" article="a" name="broom">
