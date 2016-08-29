@@ -70,6 +70,10 @@ displayHealingNumbers = false
 houseAntiTrash = true
 autoStackItems = true
 
+-- How many milliseconds (1 sec = 1000) we should wait until the player will be pushed by another player.
+push_interval = 1000
+push_walkto_interval = 1500
+
 -- Rates
 -- NOTE: rateExp is not used if you have enabled stages in data/XML/stages.xml
 rateExp = 5

@@ -101,6 +101,8 @@ class ConfigManager
 			STAIRHOP_DELAY,
 			EXP_FROM_PLAYERS_LEVEL_RANGE,
 			MAX_PACKETS_PER_SECOND,
+			PUSH_INTERVAL,
+			PUSH_WALKTO_INTERVAL,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};
