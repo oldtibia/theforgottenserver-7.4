@@ -69,6 +69,7 @@ heightStackBlock = true
 displayHealingNumbers = false
 houseAntiTrash = true
 autoStackItems = true
+enablePzLogout = true
 
 -- How many milliseconds (1 sec = 1000) we should wait until the player will be pushed by another player.
 push_interval = 1000

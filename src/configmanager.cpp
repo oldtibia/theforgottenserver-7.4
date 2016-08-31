@@ -88,6 +88,7 @@ bool ConfigManager::load()
 	boolean[DISPLAY_HEALING_NUMBERS] = getGlobalBoolean(L, "displayHealingNumbers", true);
 	boolean[HOUSE_ANTI_TRASH] = getGlobalBoolean(L, "houseAntiTrash", true);
 	boolean[AUTO_STACK_ITEMS] = getGlobalBoolean(L, "autoStackItems", true);
+	boolean[ENABLE_PZ_LOGOUT] = getGlobalBoolean(L, "enablePzLogout", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");

@@ -46,6 +46,7 @@ class ConfigManager
 			DISPLAY_HEALING_NUMBERS,
 			HOUSE_ANTI_TRASH,
 			AUTO_STACK_ITEMS,
+			ENABLE_PZ_LOGOUT,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
