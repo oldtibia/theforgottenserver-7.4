@@ -1343,6 +1343,11 @@ void Player::onThink(uint32_t interval)
 		checkSkullTicks(interval);
 	}
 
+	if (canLogout() && !hasCondition(CONDITION_INFIGHT) && !client) {
+		g_game.removeCreature(this, true);
+		g_game.addMagicEffect(this->getPosition(), CONST_ME_POFF);
+	}
+
 	addOfflineTrainingTime(interval);
 	if (lastStatsTrainingTime != getOfflineTrainingTime() / 60 / 1000) {
 		sendStats();
