@@ -1613,6 +1613,9 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::UH_TRAP)
 	registerEnumIn("configKeys", ConfigManager::HEIGHT_STACK_BLOCK)
 	registerEnumIn("configKeys", ConfigManager::DISPLAY_HEALING_NUMBERS)
+	registerEnumIn("configKeys", ConfigManager::HOUSE_ANTI_TRASH)
+	registerEnumIn("configKeys", ConfigManager::AUTO_STACK_ITEMS)
+	registerEnumIn("configKeys", ConfigManager::ENABLE_PZ_LOGOUT)
 
 	registerEnumIn("configKeys", ConfigManager::MAP_NAME)
 	registerEnumIn("configKeys", ConfigManager::HOUSE_RENT_PERIOD)
@@ -1659,6 +1662,8 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::STAIRHOP_DELAY)
 	registerEnumIn("configKeys", ConfigManager::EXP_FROM_PLAYERS_LEVEL_RANGE)
 	registerEnumIn("configKeys", ConfigManager::MAX_PACKETS_PER_SECOND)
+	registerEnumIn("configKeys", ConfigManager::PUSH_INTERVAL)
+	registerEnumIn("configKeys", ConfigManager::PUSH_WALKTO_INTERVAL)
 
 	// os
 	registerMethod("os", "mtime", LuaScriptInterface::luaSystemTime);

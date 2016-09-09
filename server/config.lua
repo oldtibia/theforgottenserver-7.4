@@ -19,10 +19,10 @@ loginProtocolPort = 7171
 gameProtocolPort = 7172
 statusProtocolPort = 7171
 maxPlayers = 0
-motd = "Welcome to The Forgotten Server!"
+motd = ""
 onePlayerOnlinePerAccount = true
 allowClones = false
-serverName = "Forgotten"
+serverName = "Tibia"
 statusTimeout = 5000
 replaceKickOnLogin = true
 maxPacketsPerSecond = 25
@@ -67,6 +67,13 @@ UHTrap = true
 -- Can walk/push over 2 items with height attribute (Parcels, boxes etc.)
 heightStackBlock = true
 displayHealingNumbers = false
+houseAntiTrash = true
+autoStackItems = true
+enablePzLogout = true
+
+-- How many milliseconds (1 sec = 1000) we should wait until the player will be pushed by another player.
+push_interval = 1000
+push_walkto_interval = 1500
 
 -- Rates
 -- NOTE: rateExp is not used if you have enabled stages in data/XML/stages.xml

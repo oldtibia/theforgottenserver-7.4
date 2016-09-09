@@ -44,6 +44,9 @@ class ConfigManager
 			UH_TRAP,
 			HEIGHT_STACK_BLOCK,
 			DISPLAY_HEALING_NUMBERS,
+			HOUSE_ANTI_TRASH,
+			AUTO_STACK_ITEMS,
+			ENABLE_PZ_LOGOUT,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
@@ -99,6 +102,8 @@ class ConfigManager
 			STAIRHOP_DELAY,
 			EXP_FROM_PLAYERS_LEVEL_RANGE,
 			MAX_PACKETS_PER_SECOND,
+			PUSH_INTERVAL,
+			PUSH_WALKTO_INTERVAL,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};

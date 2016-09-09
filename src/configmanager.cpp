@@ -86,6 +86,9 @@ bool ConfigManager::load()
 	boolean[UH_TRAP] = getGlobalBoolean(L, "UHTrap", false);
 	boolean[HEIGHT_STACK_BLOCK] = getGlobalBoolean(L, "heightStackBlock", false);
 	boolean[DISPLAY_HEALING_NUMBERS] = getGlobalBoolean(L, "displayHealingNumbers", true);
+	boolean[HOUSE_ANTI_TRASH] = getGlobalBoolean(L, "houseAntiTrash", true);
+	boolean[AUTO_STACK_ITEMS] = getGlobalBoolean(L, "autoStackItems", true);
+	boolean[ENABLE_PZ_LOGOUT] = getGlobalBoolean(L, "enablePzLogout", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");
@@ -119,6 +122,8 @@ bool ConfigManager::load()
 	integer[STAIRHOP_DELAY] = getGlobalNumber(L, "stairJumpExhaustion", 2000);
 	integer[EXP_FROM_PLAYERS_LEVEL_RANGE] = getGlobalNumber(L, "expFromPlayersLevelRange", 75);
 	integer[MAX_PACKETS_PER_SECOND] = getGlobalNumber(L, "maxPacketsPerSecond", 25);
+	integer[PUSH_INTERVAL] = getGlobalNumber(L, "push_interval", 1000);
+	integer[PUSH_WALKTO_INTERVAL] = getGlobalNumber(L, "push_walkto_interval", 1500);
 
 	loaded = true;
 	lua_close(L);

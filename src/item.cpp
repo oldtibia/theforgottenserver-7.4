@@ -816,9 +816,11 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 
 	if (it.isRune()) {
 		if (!it.runeSpellName.empty()) {
-			s << " (\"" << it.runeSpellName << "\")";
+			//s << " (\"" << it.runeSpellName << "\")";
+			s << " It's " << it.article << " \"" << it.runeSpellName << "\"-spell";
 		}
 
+		/*
 		if (it.runeLevel > 0 || it.runeMagLevel > 0) {
 			if (RuneSpell* rune = g_spells->getRuneSpell(it.id)) {
 				int32_t tmpSubType = subType;
@@ -871,6 +873,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 				s << " or higher";
 			}
 		}
+		*/
 	} else if (it.weaponType != WEAPON_NONE) {
 		if (it.weaponType == WEAPON_DISTANCE && it.ammoType != AMMO_NONE) {
 			s << " (Range:" << static_cast<uint16_t>(item ? item->getShootRange() : it.shootRange);
@@ -1298,13 +1301,19 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 	}
 
 	if (it.showCharges) {
-		s << " that has " << subType << " charge" << (subType != 1 ? "s" : "") << " left";
+		if (it.isRune()) {
+			s << " (" << subType << "x)";
+		}
+		else {
+			s << " that has " << subType << " charge" << (subType != 1 ? "s" : "") << " left";
+		}
 	}
 
 	if (it.showDuration) {
 		if (item && item->hasAttribute(ITEM_ATTRIBUTE_DURATION)) {
 			uint32_t duration = item->getDuration() / 1000;
-			s << " that will expire in ";
+			//s << " that will expire in ";
+			s << " that has energy for ";
 
 			if (duration >= 86400) {
 				uint16_t days = duration / 86400;
@@ -1440,11 +1449,20 @@ std::string Item::getNameDescription(const ItemType& it, const Item* item /*= nu
 			if (addArticle) {
 				const std::string& article = (item ? item->getArticle() : it.article);
 				if (!article.empty()) {
-					s << article << ' ';
+					if (it.isRune()) {
+						s << "a ";
+					}
+					else {
+						s << article << ' ';
+					}
 				}
 			}
-
-			s << name;
+			if (it.isRune()) {
+				s << "spell rune for level " << it.runeMagLevel << ".";
+			}
+			else {
+				s << name;
+			}
 		}
 	} else {
 		s << "an item of type " << it.id;

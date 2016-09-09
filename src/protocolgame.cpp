@@ -220,10 +220,19 @@ void ProtocolGame::logout(bool displayEffect, bool forced)
 					return;
 				}
 
-				if (!player->getTile()->hasFlag(TILESTATE_PROTECTIONZONE) && player->hasCondition(CONDITION_INFIGHT)) {
-					player->sendCancelMessage(RETURNVALUE_YOUMAYNOTLOGOUTDURINGAFIGHT);
-					return;
+				if (!g_config.getBoolean(ConfigManager::ENABLE_PZ_LOGOUT)) {
+					if (player->hasCondition(CONDITION_INFIGHT)) {
+						player->sendCancelMessage(RETURNVALUE_YOUMAYNOTLOGOUTDURINGAFIGHT);
+						return;
+					}
 				}
+				else {
+					if (!player->getTile()->hasFlag(TILESTATE_PROTECTIONZONE) && player->hasCondition(CONDITION_INFIGHT)) {
+						player->sendCancelMessage(RETURNVALUE_YOUMAYNOTLOGOUTDURINGAFIGHT);
+						return;
+					}
+				}
+				
 			}
 
 			//scripting event - onLogout
